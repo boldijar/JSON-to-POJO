@@ -15,7 +15,8 @@ public class Launcher {
 
 		try {
 			String json = readFile("test.json");
-			ClassObject root = ParseJson.parse(json, "RootName");
+			ClassObject root = ParseJson.parse(json, "RootName",
+					"com.boldijar.test");
 
 			List<ClassObject> objects = ClassObjectConverter
 					.getAllClassObjects(root, new ArrayList<ClassObject>());
