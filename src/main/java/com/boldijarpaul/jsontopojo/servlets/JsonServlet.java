@@ -6,6 +6,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.boldijarpaul.jsontopojo.entities.ClassFile;
 import com.boldijarpaul.jsontopojo.entities.ClassObject;
 import com.boldijarpaul.jsontopojo.helper.JsonHelper;
 import com.boldijarpaul.jsontopojo.parser.ClassObjectConverter;
@@ -23,8 +24,8 @@ public class JsonServlet {
 					.build();
 		}
 		ClassObject classObject = ParseJson.parse(json, root);
-		String[] classes = ClassObjectConverter
-				.classObjectToStringArray(classObject);
+		ClassFile[] classes = ClassObjectConverter
+				.classObjectToClassFileArray(classObject);
 		return Response.ok(classes).build();
 
 	}
