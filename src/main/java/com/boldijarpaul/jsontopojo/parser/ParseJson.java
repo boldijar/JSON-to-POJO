@@ -14,8 +14,8 @@ import com.boldijarpaul.jsontopojo.helper.StringHelper;
 public class ParseJson {
 
 	/* this method will parse a json file */
-	public static ClassObject parse(String json, String rootName)
-			throws JSONException {
+	public static ClassObject parse(String json, String rootName,
+			String packageName) throws JSONException {
 
 		/* initialize the json object */
 		JSONObject object = new JSONObject(json);
@@ -24,6 +24,7 @@ public class ParseJson {
 		ClassObject rootObject = new ClassObject();
 		rootObject.setJson(json);
 		rootObject.setName(rootName);
+		rootObject.setPackageName(packageName);
 
 		/* iterate through all its objects */
 		Iterator<?> keys = object.keys();
@@ -42,7 +43,7 @@ public class ParseJson {
 			if (type == ObjectType.JSONObject) {
 				JSONObject jsonObject = object.getJSONObject(key);
 				ClassObject classObject = parse(jsonObject.toString(),
-						StringHelper.firstCharUppercase(key));
+						StringHelper.firstCharUppercase(key), packageName);
 				classObject.setJson(jsonObject.toString());
 				rootObject.getObjects().add(classObject);
 			}
@@ -67,7 +68,7 @@ public class ParseJson {
 				if (arrayType == ObjectType.JSONObject) {
 					JSONObject jsonObject = jsonArray.getJSONObject(0);
 					ClassObject classObject = parse(jsonObject.toString(),
-							StringHelper.firstCharUppercase(key));
+							StringHelper.firstCharUppercase(key), packageName);
 					classObject.setJson(jsonObject.toString());
 					rootObject.getObjectsArray().add(classObject);
 				}

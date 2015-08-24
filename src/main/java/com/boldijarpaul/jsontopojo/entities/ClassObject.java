@@ -5,19 +5,33 @@ import java.util.List;
 
 public class ClassObject {
 
-	/* a class object has a name, and own json, which is the json object representation of it */
+	/*
+	 * a class object has a name, and own json, which is the json object
+	 * representation of it
+	 */
 	private String name;
 	private String json;
+	private String packageName;
 
-	
+	public String getPackageName() {
+		return packageName;
+	}
+
+	public void setPackageName(String packageName) {
+		this.packageName = packageName;
+	}
+
 	private List<Variable> primiveVariables = new ArrayList<Variable>();
 	private List<ClassObject> objects = new ArrayList<ClassObject>();
-	
-	/* there are also arrays, so here we are going to put the array of variables and array or class object */
-	
+
+	/*
+	 * there are also arrays, so here we are going to put the array of variables
+	 * and array or class object
+	 */
+
 	private List<Variable> primiveVariablesArray = new ArrayList<Variable>();
 	private List<ClassObject> objectsArray = new ArrayList<ClassObject>();
-	
+
 	public List<Variable> getPrimiveVariables() {
 		return primiveVariables;
 	}
@@ -65,6 +79,5 @@ public class ClassObject {
 	public void setObjectsArray(List<ClassObject> objectsArray) {
 		this.objectsArray = objectsArray;
 	}
-	
 
 }
