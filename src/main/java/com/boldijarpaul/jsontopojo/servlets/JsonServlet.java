@@ -25,10 +25,9 @@ public class JsonServlet {
 					.build();
 		}
 		ClassObject classObject = ParseJson.parse(json, root);
-		List<ClassObject> classObjects = ClassObjectConverter
-				.getAllClassObjects(classObject);
-		String[] classes = new String[classObjects.size()];
-		//for(int i=)
+		String[] classes = ClassObjectConverter
+				.classObjectToStringArray(classObject);
+		return Response.ok(classes).build();
 
 	}
 }

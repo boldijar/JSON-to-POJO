@@ -12,7 +12,9 @@ public class HomeServlet {
 	@GET
 	@Path("")
 	public String getImage() {
-		return "Give me a star! https://github.com/BoldijarPaul/JSON-to-POJO";
+		return "Give me a star! https://github.com/BoldijarPaul/JSON-to-POJO"
+				+ "\n"
+				+ "Do a post at /json/{root name} with your JSON :)";
 	}
 
 }
