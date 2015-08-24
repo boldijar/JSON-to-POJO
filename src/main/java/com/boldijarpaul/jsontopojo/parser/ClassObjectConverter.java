@@ -12,7 +12,8 @@ public class ClassObjectConverter {
 
 	/* converts a class object to a pojo string, line by line */
 	public static String toPojo(ClassObject classObject) {
-		String result = "public class " + classObject.getName() + "{\n";
+		String result = "import java.util.List;\n\n";
+		result += "public class " + classObject.getName() + "{\n";
 
 		/* variables declaration */
 		for (Variable variable : classObject.getPrimiveVariables()) {
@@ -23,6 +24,17 @@ public class ClassObjectConverter {
 			result += "private " + obj.getName() + " "
 					+ StringHelper.firstCharLowerCase(obj.getName()) + ";\n";
 		}
+		/* Lists */
+		for (Variable variable : classObject.getPrimiveVariablesArray()) {
+			result += "private List<" + variable.getType().toString() + "> "
+					+ variable.getName() + ";\n";
+		}
+		for (ClassObject obj : classObject.getObjectsArray()) {
+			result += "private List<" + obj.getName() + "> "
+					+ StringHelper.firstCharLowerCase(obj.getName()) + ";\n";
+		}
+		
+		
 		result += "\n";
 		/* getters setters */
 		for (Variable variable : classObject.getPrimiveVariables()) {
