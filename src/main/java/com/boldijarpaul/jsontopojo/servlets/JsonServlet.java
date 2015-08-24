@@ -20,13 +20,29 @@ public class JsonServlet {
 	public Response getClasses(String json, @PathParam("root") String root) {
 		if (!JsonHelper.jsonValid(json)) {
 			/* invalid json */
-			return Response.status(Status.BAD_REQUEST).entity("JSON error")
-					.build();
+			return Response
+					.status(Status.BAD_REQUEST)
+					.entity("JSON error")
+					.header("Access-Control-Allow-Origin", "*")
+					.header("Access-Control-Allow-Headers",
+							"origin, content-type, accept, authorization")
+					.header("Access-Control-Allow-Credentials", "true")
+					.header("Access-Control-Allow-Methods",
+							"GET, POST, PUT, DELETE, OPTIONS, HEAD")
+					.header("Access-Control-Max-Age", "1209600").build();
 		}
 		ClassObject classObject = ParseJson.parse(json, root);
 		ClassFile[] classes = ClassObjectConverter
 				.classObjectToClassFileArray(classObject);
-		return Response.ok(classes).build();
+		return Response
+				.ok(classes)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Headers",
+						"origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Methods",
+						"GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.header("Access-Control-Max-Age", "1209600").build();
 
 	}
 }
