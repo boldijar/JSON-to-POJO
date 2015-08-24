@@ -2,6 +2,7 @@ package com.boldijarpaul.jsontopojo.parser;
 
 import java.util.Iterator;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -46,9 +47,75 @@ public class ParseJson {
 				rootObject.getObjects().add(classObject);
 			}
 
+			/* we found a json array, parse it, and add to root */
+			if (type == ObjectType.JSONArray) {
+				JSONArray jsonArray = object.getJSONArray(key);
+				if (jsonArray.length() == 0)
+					continue; /* array empty */
+
+				/* if we got here, our array is not empty, so get the first item */
+				ObjectType arrayType = getJsonArrayType(jsonArray);
+
+				if (arrayType != ObjectType.JSONArray
+						&& type != ObjectType.JSONObject) {
+					/* array of primitive variable */
+					Variable variable = new Variable();
+					variable.setName(key);
+					variable.setType(arrayType);
+					rootObject.getPrimiveVariablesArray().add(variable);
+				}
+				if (arrayType == ObjectType.JSONObject) {
+					JSONObject jsonObject = object.getJSONObject(key);
+					ClassObject classObject = parse(jsonObject.toString(),
+							StringHelper.firstCharUppercase(key));
+					classObject.setJson(jsonObject.toString());
+					rootObject.getObjects().add(classObject);
+				}
+
+			}
+
 		}
 
 		return rootObject;
+	}
+
+	public static ObjectType getJsonArrayType(JSONArray jsonArray) {
+		try {
+			jsonArray.getLong(0);
+			return ObjectType.Long;
+		} catch (Exception e) {
+		}
+
+		try {
+			jsonArray.getDouble(0);
+			return ObjectType.Double;
+		} catch (Exception e) {
+		}
+
+		try {
+			jsonArray.getBoolean(0);
+			return ObjectType.Boolean;
+		} catch (Exception e) {
+		}
+
+		try {
+			jsonArray.getJSONObject(0);
+			return ObjectType.JSONObject;
+		} catch (Exception e) {
+		}
+
+		try {
+			jsonArray.getJSONArray(0);
+			return ObjectType.JSONArray;
+		} catch (Exception e) {
+		}
+		try {
+			jsonArray.getString(0);
+			return ObjectType.String;
+		} catch (Exception e) {
+		}
+
+		return null;
 	}
 
 	/* returns the field type of the json object with the wanted key */
