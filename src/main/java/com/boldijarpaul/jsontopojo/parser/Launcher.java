@@ -18,11 +18,12 @@ public class Launcher {
 
 			// System.out.println(ClassObjectConverter.toPojo(root));
 
+			
 			List<ClassObject> objects = ClassObjectConverter
 					.getAllClassObjects(root, new ArrayList<ClassObject>());
-
+			System.out.println(objects.size());
 			for (ClassObject classObject : objects) {
-				//ClassObjectWriter.writeClassObject(classObject);
+				System.out.println(classObject.getName());
 			}
 
 		} catch (Exception ex) {
