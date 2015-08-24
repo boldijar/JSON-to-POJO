@@ -1,7 +1,5 @@
 package com.boldijarpaul.jsontopojo.servlets;
 
-import java.util.List;
-
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -13,11 +11,11 @@ import com.boldijarpaul.jsontopojo.helper.JsonHelper;
 import com.boldijarpaul.jsontopojo.parser.ClassObjectConverter;
 import com.boldijarpaul.jsontopojo.parser.ParseJson;
 
-@Path("/")
+@Path("/json")
 public class JsonServlet {
 
 	@POST
-	@Path("/json/{root}")
+	@Path("/{root}")
 	public Response getClasses(String json, @PathParam("root") String root) {
 		if (!JsonHelper.jsonValid(json)) {
 			/* invalid json */
