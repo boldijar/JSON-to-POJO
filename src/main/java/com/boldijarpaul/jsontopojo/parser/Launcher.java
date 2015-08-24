@@ -22,7 +22,7 @@ public class Launcher {
 					.getAllClassObjects(root, new ArrayList<ClassObject>());
 
 			for (ClassObject classObject : objects) {
-				ClassObjectWriter.writeClassObject(classObject);
+				//ClassObjectWriter.writeClassObject(classObject);
 			}
 
 		} catch (Exception ex) {
