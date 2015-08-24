@@ -23,8 +23,7 @@ public class Launcher {
 					.getAllClassObjects(root, new ArrayList<ClassObject>());
 			System.out.println(objects.size());
 			for (ClassObject classObject : objects) {
-//				System.out.println(new Gson().toJson(ClassObjectConverter
-//						.classObjectToClassFileArray(classObject)));
+				ClassObjectWriter.writeClassObject(classObject, "generated");
 			}
 
 		} catch (Exception ex) {

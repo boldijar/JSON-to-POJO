@@ -9,10 +9,13 @@ import com.boldijarpaul.jsontopojo.entities.ClassObject;
 public class ClassObjectWriter {
 
 	/* will write the class file */
-	public static void writeClassObject(ClassObject classObject)
+	public static void writeClassObject(ClassObject classObject, String folder)
 			throws FileNotFoundException, UnsupportedEncodingException {
-		PrintWriter writer = new PrintWriter(classObject.getName() + ".java",
-				"UTF-8");
+		String path = folder + "/" + classObject.getName() + ".java";
+		if (folder.length() == 0) {
+			path = classObject.getName() + ".java";
+		}
+		PrintWriter writer = new PrintWriter(path, "UTF-8");
 		writer.print(ClassObjectConverter.toPojo(classObject));
 		writer.close();
 	}
