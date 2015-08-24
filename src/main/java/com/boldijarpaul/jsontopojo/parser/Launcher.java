@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import com.boldijarpaul.jsontopojo.entities.ClassObject;
 
@@ -15,12 +16,10 @@ public class Launcher {
 			String json = readFile("test.json");
 			ClassObject root = ParseJson.parse(json, "RootName");
 
-			System.out.println(ClassObjectConverter.toPojo(root));
+			// System.out.println(ClassObjectConverter.toPojo(root));
 
-			System.out.println();
-			System.out.println();
-			System.out.println(ClassObjectConverter.toPojo(root.getObjects()
-					.get(0)));
+			System.out.println(ClassObjectConverter.getAllClassObjects(root,
+					new ArrayList<ClassObject>()).size());
 
 		} catch (Exception ex) {
 			ex.printStackTrace();

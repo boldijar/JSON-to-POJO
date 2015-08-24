@@ -1,5 +1,7 @@
 package com.boldijarpaul.jsontopojo.parser;
 
+import java.util.List;
+
 import com.boldijarpaul.jsontopojo.entities.ClassObject;
 import com.boldijarpaul.jsontopojo.entities.Variable;
 import com.boldijarpaul.jsontopojo.helper.StringHelper;
@@ -66,5 +68,19 @@ public class ClassObjectConverter {
 		result += "this." + nameLowercase + "=" + nameLowercase + ";\n}\n";
 
 		return result;
+	}
+
+	/*
+	 * a class object can have nested class objects, this method will return
+	 * them all, recursively
+	 */
+	public static List<ClassObject> getAllClassObjects(ClassObject classObject,
+			List<ClassObject> classObjects) {
+		classObjects.add(classObject);
+		for (int i = 0; i < classObject.getObjects().size(); i++) {
+			ClassObject newClassObject = classObject.getObjects().get(i);
+			return getAllClassObjects(newClassObject, classObjects);
+		}
+		return classObjects;
 	}
 }
