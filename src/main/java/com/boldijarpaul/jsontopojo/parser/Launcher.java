@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.boldijarpaul.jsontopojo.entities.ClassObject;
+import com.google.gson.Gson;
 
 public class Launcher {
 
@@ -18,12 +19,12 @@ public class Launcher {
 
 			// System.out.println(ClassObjectConverter.toPojo(root));
 
-			
 			List<ClassObject> objects = ClassObjectConverter
 					.getAllClassObjects(root, new ArrayList<ClassObject>());
 			System.out.println(objects.size());
 			for (ClassObject classObject : objects) {
-				System.out.println(classObject.getName());
+//				System.out.println(new Gson().toJson(ClassObjectConverter
+//						.classObjectToClassFileArray(classObject)));
 			}
 
 		} catch (Exception ex) {
