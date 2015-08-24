@@ -3,6 +3,7 @@ package com.boldijarpaul.jsontopojo.parser;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.boldijarpaul.jsontopojo.entities.ClassFile;
 import com.boldijarpaul.jsontopojo.entities.ClassObject;
 import com.boldijarpaul.jsontopojo.entities.Variable;
 import com.boldijarpaul.jsontopojo.helper.StringHelper;
@@ -90,12 +91,16 @@ public class ClassObjectConverter {
 	}
 
 	/* converts a class object to a list of strings, which are the whole classes */
-	public static String[] classObjectToStringArray(ClassObject classObject) {
+	public static ClassFile[] classObjectToClassFileArray(
+			ClassObject classObject) {
 		List<ClassObject> classObjects = ClassObjectConverter
 				.getAllClassObjects(classObject);
-		String[] classes = new String[classObjects.size()];
+		ClassFile[] classes = new ClassFile[classObjects.size()];
 		for (int i = 0; i < classes.length; i++) {
-			classes[i] = ClassObjectConverter.toPojo(classObjects.get(i));
+			classes[i] = new ClassFile();
+			classes[i]
+					.setText(ClassObjectConverter.toPojo(classObjects.get(i)));
+			classes[i].setFilename(classObjects.get(i).getName() + ".java");
 		}
 		return classes;
 	}
