@@ -1,0 +1,10 @@
+{
+  type: "success",
+  dob: "1.34",
+  longg: "12355",
+  bol: "true",
+  value: {
+    id: 368,
+    joke: "Chuck Norris has to register every part of his body as a separate lethal weapon. His spleen is considered a concealed weapon in over 50 states.",
+  }
+}

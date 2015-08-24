@@ -1,22 +1,19 @@
 package com.boldijarpaul.jsontopojo.parser;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import com.boldijarpaul.jsontopojo.entities.ClassObject;
-
- 
-
-
- 
 
 public class Launcher {
 
 	public static void main(String[] args) {
 
 		try {
-			String json = readFile("json");
-			ClassObject root = ParseJson.parse(json, "Cap");
+			String json = readFile("test.json");
+			ClassObject root = ParseJson.parse(json, "RootName");
 
 			System.out.println(ClassObjectConverter.toPojo(root));
 
