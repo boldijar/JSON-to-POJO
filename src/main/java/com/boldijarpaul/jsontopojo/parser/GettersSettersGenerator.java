@@ -24,14 +24,14 @@ public class GettersSettersGenerator {
 	
 	/* returns getter and setters for a array of a variable */
 	public static String variableArrayGetterAndSetter(Variable variable) {
-		String result = "public " + variable.getType().toString() + "[] get"
+		String result = "public List<" + variable.getType().toString() + "> get"
 				+ StringHelper.firstCharUppercase(variable.getName())
 				+ "() {\n";
 		result += "return " + variable.getName() + ";\n}\n";
 
 		result += "public void set"
-				+ StringHelper.firstCharUppercase(variable.getName()) + "(";
-		result += variable.getType().toString() + "[] " + variable.getName();
+				+ StringHelper.firstCharUppercase(variable.getName()) + "(List<";
+		result += variable.getType().toString() + "> " + variable.getName();
 		result += "){\n";
 		result += "this." + variable.getName() + "=" + variable.getName()
 				+ ";\n}\n";
@@ -65,12 +65,12 @@ public class GettersSettersGenerator {
 		String nameUppercase = StringHelper.firstCharUppercase(classObject
 				.getName());
 
-		String result = "public " + nameUppercase + "[] get" + nameUppercase
+		String result = "public List<" + nameUppercase + "> get" + nameUppercase
 				+ "() {\n";
 		result += "return " + nameLowercase + ";\n}\n";
 
-		result += "public void set" + nameUppercase + "(";
-		result += nameUppercase + "[] " + nameLowercase;
+		result += "public void set" + nameUppercase + "(List<";
+		result += nameUppercase + "> " + nameLowercase;
 		result += "){\n";
 		result += "this." + nameLowercase + "=" + nameLowercase + ";\n}\n";
 
