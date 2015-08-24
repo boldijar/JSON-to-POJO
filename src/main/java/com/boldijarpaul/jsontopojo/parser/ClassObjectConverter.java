@@ -13,7 +13,13 @@ public class ClassObjectConverter {
 	/* converts a class object to a pojo string, line by line */
 	public static String toPojo(ClassObject classObject) {
 
-		String result = "import java.util.List;\n\n";
+		String result = "";
+
+		/* only add import if we need it */
+		if (classObject.getObjectsArray().size() > 0
+				|| classObject.getPrimiveVariablesArray().size() > 0) {
+			result += "import java.util.List;\n\n";
+		}
 		result += "public class " + classObject.getName() + " {\n";
 
 		/* variables declaration */
