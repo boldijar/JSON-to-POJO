@@ -1,5 +1,6 @@
 package com.boldijarpaul.jsontopojo.parser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.boldijarpaul.jsontopojo.entities.ClassObject;
@@ -82,5 +83,9 @@ public class ClassObjectConverter {
 			return getAllClassObjects(newClassObject, classObjects);
 		}
 		return classObjects;
+	}
+
+	public static List<ClassObject> getAllClassObjects(ClassObject classObject) {
+		return getAllClassObjects(classObject, new ArrayList<ClassObject>());
 	}
 }
