@@ -2,6 +2,9 @@ package com.boldijarpaul.jsontopojo.parser;
 
 import java.util.Iterator;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.boldijarpaul.jsontopojo.entities.ClassObject;
 import com.boldijarpaul.jsontopojo.entities.ObjectType;
 import com.boldijarpaul.jsontopojo.entities.Variable;
