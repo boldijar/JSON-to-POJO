@@ -17,8 +17,7 @@ public class Launcher {
 			String json = readFile("test.json");
 			ClassObject root = ParseJson.parse(json, "RootName");
 
-			// System.out.println(ClassObjectConverter.toPojo(root));
-
+	
 			List<ClassObject> objects = ClassObjectConverter
 					.getAllClassObjects(root, new ArrayList<ClassObject>());
 			System.out.println(objects.size());

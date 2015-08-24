@@ -1,23 +1,9 @@
 {
   number: "2015",
   doubleNumber: "1.34",
-  text: "hey",
-  bool: "true",
-  language: {
-    id: 1,
-    name: "Java",
-    vector3: {
-      x: 123,
-      y: 134,
-      z: 451
-    },
-    vector2: {
-      x: 123,
-      y: 134
-    },
-    nothing: {
-      cool: "true",
-      txt: "yea"
-    }
-  }
+  names:[
+  "paul",
+  "boldijar",
+  "vlad"
+  ]
 }
