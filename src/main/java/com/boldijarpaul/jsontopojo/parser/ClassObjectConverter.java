@@ -12,25 +12,28 @@ public class ClassObjectConverter {
 
 	/* converts a class object to a pojo string, line by line */
 	public static String toPojo(ClassObject classObject) {
+
 		String result = "import java.util.List;\n\n";
-		result += "public class " + classObject.getName() + "{\n";
+		result += "public class " + classObject.getName() + " {\n";
 
 		/* variables declaration */
 		for (Variable variable : classObject.getPrimiveVariables()) {
-			result += "private " + variable.getType().toString() + " "
-					+ variable.getName() + ";\n";
+			result += StringHelper.tab + "private "
+					+ variable.getType().toString() + " " + variable.getName()
+					+ ";\n";
 		}
 		for (ClassObject obj : classObject.getObjects()) {
-			result += "private " + obj.getName() + " "
+			result += StringHelper.tab + "private " + obj.getName() + " "
 					+ StringHelper.firstCharLowerCase(obj.getName()) + ";\n";
 		}
 		/* Lists declaration */
 		for (Variable variable : classObject.getPrimiveVariablesArray()) {
-			result += "private List<" + variable.getType().toString() + "> "
-					+ variable.getName() + ";\n";
+			result += StringHelper.tab + "private List<"
+					+ variable.getType().toString() + "> " + variable.getName()
+					+ ";\n";
 		}
 		for (ClassObject obj : classObject.getObjectsArray()) {
-			result += "private List<" + obj.getName() + "> "
+			result += StringHelper.tab + "private List<" + obj.getName() + "> "
 					+ StringHelper.firstCharLowerCase(obj.getName()) + ";\n";
 		}
 
@@ -53,7 +56,7 @@ public class ClassObjectConverter {
 					.classObjectArrayGetterAndSetter(obj);
 		}
 		result += "}";
-		
+
 		return result;
 	}
 
