@@ -4,14 +4,13 @@ import com.boldijarpaul.jsontopojo.entities.ClassObject;
 import com.boldijarpaul.jsontopojo.entities.Variable;
 import com.boldijarpaul.jsontopojo.helper.StringHelper;
 
- 
-
 public class ClassObjectConverter {
 
+	/* converts a class object to a pojo string, line by line */
 	public static String toPojo(ClassObject classObject) {
 		String result = "public class " + classObject.getName() + "{\n";
 
-		/* variables */
+		/* variables declaration */
 		for (Variable variable : classObject.getPrimiveVariables()) {
 			result += "private " + variable.getType().toString() + " "
 					+ variable.getName() + ";\n";
@@ -21,17 +20,19 @@ public class ClassObjectConverter {
 					+ StringHelper.firstCharLowerCase(obj.getName()) + ";\n";
 		}
 		result += "\n";
-		/* get set */
+		/* getters setters */
 		for (Variable variable : classObject.getPrimiveVariables()) {
 			result += variableGetterAndSetter(variable);
 		}
 		for (ClassObject obj : classObject.getObjects()) {
 			result += classObjectGetterAndSetter(obj);
 		}
+
 		result += "}";
 		return result;
 	}
 
+	/* returns getter and setters for a variable */
 	public static String variableGetterAndSetter(Variable variable) {
 		String result = "public " + variable.getType().toString() + " get"
 				+ StringHelper.firstCharUppercase(variable.getName())
@@ -48,6 +49,7 @@ public class ClassObjectConverter {
 		return result;
 	}
 
+	/* returns the getters and setters for a class object */
 	public static String classObjectGetterAndSetter(ClassObject classObject) {
 		String nameLowercase = StringHelper.firstCharLowerCase(classObject
 				.getName());

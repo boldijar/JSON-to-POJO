@@ -5,9 +5,11 @@ import java.util.List;
 
 public class ClassObject {
 
+	/* a class object has a name, and own json, which is the json object representation of it */
 	private String name;
 	private String json;
 
+	
 	private List<Variable> primiveVariables = new ArrayList<Variable>();
 	private List<ClassObject> objects = new ArrayList<ClassObject>();
 
