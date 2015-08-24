@@ -15,6 +15,10 @@ public class ClassObjectConverter {
 
 		String result = "";
 
+		if (classObject.getPackageName() != null) {
+			result += "package " + classObject.getPackageName() + ";\n\n";
+		}
+
 		/* only add import if we need it */
 		if (classObject.getObjectsArray().size() > 0
 				|| classObject.getPrimiveVariablesArray().size() > 0) {
