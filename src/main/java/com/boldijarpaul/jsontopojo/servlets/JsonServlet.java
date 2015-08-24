@@ -1,5 +1,7 @@
 package com.boldijarpaul.jsontopojo.servlets;
 
+import java.util.List;
+
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -23,7 +25,10 @@ public class JsonServlet {
 					.build();
 		}
 		ClassObject classObject = ParseJson.parse(json, root);
-		//ClassObject[] classObjects=ClassObjectConverter.getAllClassObjects(classObject, classObjects)
+		List<ClassObject> classObjects = ClassObjectConverter
+				.getAllClassObjects(classObject);
+		String[] classes = new String[classObjects.size()];
+		//for(int i=)
 
 	}
 }
