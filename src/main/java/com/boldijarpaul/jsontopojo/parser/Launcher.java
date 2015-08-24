@@ -3,8 +3,8 @@ package com.boldijarpaul.jsontopojo.parser;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.boldijarpaul.jsontopojo.entities.ClassObject;
 
@@ -18,8 +18,12 @@ public class Launcher {
 
 			// System.out.println(ClassObjectConverter.toPojo(root));
 
-			System.out.println(ClassObjectConverter.getAllClassObjects(root,
-					new ArrayList<ClassObject>()).size());
+			List<ClassObject> objects = ClassObjectConverter
+					.getAllClassObjects(root, new ArrayList<ClassObject>());
+
+			for (ClassObject classObject : objects) {
+				ClassObjectWriter.writeClassObject(classObject);
+			}
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
