@@ -88,4 +88,15 @@ public class ClassObjectConverter {
 	public static List<ClassObject> getAllClassObjects(ClassObject classObject) {
 		return getAllClassObjects(classObject, new ArrayList<ClassObject>());
 	}
+
+	/* converts a class object to a list of strings, which are the whole classes */
+	public static String[] classObjectToStringArray(ClassObject classObject) {
+		List<ClassObject> classObjects = ClassObjectConverter
+				.getAllClassObjects(classObject);
+		String[] classes = new String[classObjects.size()];
+		for (int i = 0; i < classes.length; i++) {
+			classes[i] = ClassObjectConverter.toPojo(classObjects.get(i));
+		}
+		return classes;
+	}
 }
