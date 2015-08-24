@@ -57,7 +57,7 @@ public class ParseJson {
 				ObjectType arrayType = getJsonArrayType(jsonArray);
 
 				if (arrayType != ObjectType.JSONArray
-						&& type != ObjectType.JSONObject) {
+						&& arrayType != ObjectType.JSONObject) {
 					/* array of primitive variable */
 					Variable variable = new Variable();
 					variable.setName(key);
@@ -69,7 +69,7 @@ public class ParseJson {
 					ClassObject classObject = parse(jsonObject.toString(),
 							StringHelper.firstCharUppercase(key));
 					classObject.setJson(jsonObject.toString());
-					rootObject.getObjects().add(classObject);
+					rootObject.getObjectsArray().add(classObject);
 				}
 
 			}
