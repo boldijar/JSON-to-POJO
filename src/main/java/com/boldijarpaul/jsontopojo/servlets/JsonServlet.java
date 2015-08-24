@@ -3,6 +3,7 @@ package com.boldijarpaul.jsontopojo.servlets;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
@@ -17,7 +18,8 @@ public class JsonServlet {
 
 	@POST
 	@Path("/{root}")
-	public Response getClasses(String json, @PathParam("root") String root) {
+	public Response getClasses(String json, @PathParam("root") String root,
+			@QueryParam("package") String packageName) {
 		if (!JsonHelper.jsonValid(json)) {
 			/* invalid json */
 			return Response
@@ -31,7 +33,7 @@ public class JsonServlet {
 							"GET, POST, PUT, DELETE, OPTIONS, HEAD")
 					.header("Access-Control-Max-Age", "1209600").build();
 		}
-		ClassObject classObject = ParseJson.parse(json, root);
+		ClassObject classObject = ParseJson.parse(json, root, packageName);
 		ClassFile[] classes = ClassObjectConverter
 				.classObjectToClassFileArray(classObject);
 		return Response
