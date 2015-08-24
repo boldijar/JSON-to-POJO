@@ -65,7 +65,7 @@ public class ParseJson {
 					rootObject.getPrimiveVariablesArray().add(variable);
 				}
 				if (arrayType == ObjectType.JSONObject) {
-					JSONObject jsonObject = object.getJSONObject(key);
+					JSONObject jsonObject = jsonArray.getJSONObject(0);
 					ClassObject classObject = parse(jsonObject.toString(),
 							StringHelper.firstCharUppercase(key));
 					classObject.setJson(jsonObject.toString());
