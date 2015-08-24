@@ -12,7 +12,12 @@ public class ClassObject {
 	
 	private List<Variable> primiveVariables = new ArrayList<Variable>();
 	private List<ClassObject> objects = new ArrayList<ClassObject>();
-
+	
+	/* there are also arrays, so here we are going to put the array of variables and array or class object */
+	
+	private List<Variable> primiveVariablesArray = new ArrayList<Variable>();
+	private List<ClassObject> objectsArray = new ArrayList<ClassObject>();
+	
 	public List<Variable> getPrimiveVariables() {
 		return primiveVariables;
 	}
@@ -43,6 +48,22 @@ public class ClassObject {
 
 	public void setJson(String json) {
 		this.json = json;
+	}
+
+	public List<Variable> getPrimiveVariablesArray() {
+		return primiveVariablesArray;
+	}
+
+	public void setPrimiveVariablesArray(List<Variable> primiveVariablesArray) {
+		this.primiveVariablesArray = primiveVariablesArray;
+	}
+
+	public List<ClassObject> getObjectsArray() {
+		return objectsArray;
+	}
+
+	public void setObjectsArray(List<ClassObject> objectsArray) {
+		this.objectsArray = objectsArray;
 	}
 	
 
