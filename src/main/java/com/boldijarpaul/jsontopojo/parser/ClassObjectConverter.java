@@ -53,7 +53,8 @@ public class ClassObjectConverter {
 					.classObjectArrayGetterAndSetter(obj);
 		}
 		result += "}";
-
+		
+		return result;
 	}
 
 	/*
