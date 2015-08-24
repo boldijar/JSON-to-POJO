@@ -1,0 +1,59 @@
+package com.boldijarpaul.jsontopojo.parser;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+import com.boldijarpaul.jsontopojo.entities.ClassObject;
+
+ 
+
+
+ 
+
+public class Launcher {
+
+	public static void main(String[] args) {
+
+		try {
+			String json = readFile("json");
+			ClassObject root = ParseJson.parse(json, "Cap");
+
+			System.out.println(ClassObjectConverter.toPojo(root));
+
+			System.out.println();
+			System.out.println();
+			System.out.println(ClassObjectConverter.toPojo(root.getObjects()
+					.get(0)));
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
+
+	public static String readFile(String filename) {
+		String content = null;
+		File file = new File(filename); // for ex foo.txt
+		FileReader reader = null;
+		try {
+			reader = new FileReader(file);
+			char[] chars = new char[(int) file.length()];
+			reader.read(chars);
+			content = new String(chars);
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return content;
+	}
+
+}
