@@ -20,6 +20,10 @@ public class JsonServlet {
 	@Path("/{root}")
 	public Response getClasses(String json, @PathParam("root") String root,
 			@QueryParam("package") String packageName) {
+		if (packageName != null && packageName.trim().length() == 0) {
+			packageName = null;
+			/* if we only have white spaces remove them */
+		}
 		if (!JsonHelper.jsonValid(json)) {
 			/* invalid json */
 			return Response
