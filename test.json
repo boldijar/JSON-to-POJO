@@ -6,8 +6,7 @@
     "boldijar",
     "vlad"
   ],
-  schools: [
-    people: [
+  people: [
     {
       "nume": "dan",
       "varsta": 12,
@@ -18,18 +17,5 @@
       "varsta": 15,
       "casatorit": true
     }
-  ],
-  [
-    {
-      "nume": "dan",
-      "varsta": 12,
-      "casatorit": false
-    },
-    {
-      "nume": "viorel",
-      "varsta": 15,
-      "casatorit": true
-    }
-  ]
   ]
 }
