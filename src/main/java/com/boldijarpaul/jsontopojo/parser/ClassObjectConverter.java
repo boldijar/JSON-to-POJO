@@ -67,6 +67,10 @@ public class ClassObjectConverter {
 			ClassObject newClassObject = classObject.getObjects().get(i);
 			classObjects.addAll(getAllClassObjects(newClassObject));
 		}
+		for (int i = 0; i < classObject.getObjectsArray().size(); i++) {
+			ClassObject newClassObject = classObject.getObjects().get(i);
+			classObjects.addAll(getAllClassObjects(newClassObject));
+		}
 		return classObjects;
 	}
 
