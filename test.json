@@ -1,21 +1,17 @@
-{
-  number: "2015",
-  doubleNumber: "1.34",
-  names: [
-    "paul",
-    "boldijar",
-    "vlad"
-  ],
-  people: [
-    {
-      "nume": "dan",
-      "varsta": 12,
-      "casatorit": false
-    },
-    {
-      "nume": "viorel",
-      "varsta": 15,
-      "casatorit": true
-    }
-  ]
-}
+[
+  {
+    nume: "bol",
+    varsta: 123,
+    "smek": true
+  },
+  {
+    nume: "da",
+    varsta: 341,
+    "smek": false
+  },
+  {
+    nume: "bol",
+    varsta: 123,
+    "smek": false
+  }
+]

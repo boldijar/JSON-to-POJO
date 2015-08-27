@@ -21,10 +21,6 @@ public class Launcher {
 					.getAllClassObjects(root, new ArrayList<ClassObject>());
 			System.out.println(objects.size());
 			for (ClassObject classObject : objects) {
-				System.out.println(classObject.getPrimiveVariablesArray()
-						.size()
-						+ " primitive "
-						+ classObject.getObjectsArray().size() + " object");
 				ClassObjectWriter.writeClassObject(classObject, "generated");
 			}
 
