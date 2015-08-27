@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.boldijarpaul.jsontopojo.entities.ClassObject;
-import com.google.gson.Gson;
 
 public class Launcher {
 
