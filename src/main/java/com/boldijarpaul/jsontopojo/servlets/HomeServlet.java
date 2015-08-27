@@ -11,7 +11,7 @@ public class HomeServlet {
 	@Path("")
 	public Response getText() {
 		String response = "Give me a star! https://github.com/BoldijarPaul/JSON-to-POJO"
-				+ "\n" + "Do a post at /json/{root name} with your JSON :)";
+				+ "\n" + "Do a post at /json/{root name} with your JSON :) \n Last updated: 28/8/2015";
 		return Response
 				.ok(response)
 				.header("Access-Control-Allow-Origin", "*")
