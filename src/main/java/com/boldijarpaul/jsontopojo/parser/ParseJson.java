@@ -17,6 +17,14 @@ public class ParseJson {
 	public static ClassObject parse(String json, String rootName,
 			String packageName) throws JSONException {
 
+		/* first check if this is a json array instead of json object */
+		try {
+			JSONArray jsonArray = new JSONArray(json);
+			/* if we get here, this is a json array */
+			return parse(jsonArray.getJSONObject(0).toString(),rootName,packageName);
+		} catch (Exception ex) {
+
+		}
 		/* initialize the json object */
 		JSONObject object = new JSONObject(json);
 
